@@ -2,8 +2,6 @@ import yaml
 import sys
 import logging
 
-from logging_config import setup_logging
-
 logger = logging.getLogger("lib/config.py")
 
 def load_config(file_path):
