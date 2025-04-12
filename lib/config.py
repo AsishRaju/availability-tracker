@@ -5,6 +5,18 @@ import logging
 logger = logging.getLogger("lib/config.py")
 
 def load_config(file_path):
+    """
+    Load and validate a YAML configuration file containing endpoint information.
+    
+    The configuration file must contain a list of endpoint dictionaries, each with
+    required 'name' and 'url' string fields.
+    
+    Args:
+        file_path (str): Path to the YAML configuration file.
+        
+    Returns:
+        list: A list of validated endpoint dictionaries.
+    """
     try:
         logger.debug(f"Loading configuration from {file_path}")
         with open(file_path, 'r') as file:

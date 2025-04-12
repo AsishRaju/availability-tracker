@@ -8,9 +8,9 @@ setup_logging()
 logger = logging.getLogger(__name__)
 
 if __name__ == "__main__":
-    logger.info("Application starting")
+    logger.info("Monitoring script started")
     if len(sys.argv) != 2:
-        print("Usage: python main.py <config_file_path>")
+        logger.debug("Usage: python main.py <config_file_path>")
         sys.exit(1)
 
     config_file = sys.argv[1]
@@ -18,7 +18,7 @@ if __name__ == "__main__":
         config = load_config(config_file)
         monitor_endpoints(config)
     except KeyboardInterrupt:
-        print("\nMonitoring stopped by user.")
+        logger.error("Monitoring stopped by user.")
     except Exception as e:
-        print(f"Error: {e}")
+        logger.error(f"Error: {e}")
         sys.exit(1)

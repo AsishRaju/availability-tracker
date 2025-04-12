@@ -9,6 +9,24 @@ from lib.utils import extract_domain, parse_body
 logger = logging.getLogger("lib/monitor.py")
 
 def check_health(endpoint):
+    """
+    Check the health status of a specified endpoint.
+    
+    Makes an HTTP request to the endpoint and determines if it's healthy based on:
+    - HTTP status code (200-299 is considered healthy)
+    - Response time (< 0.5 seconds is considered healthy)
+    
+    Args:
+        endpoint (dict): Dictionary containing endpoint configuration with:
+            - 'name': Endpoint name (required)
+            - 'url': URL to check (required)
+            - 'method': HTTP method to use (default: 'GET')
+            - 'headers': HTTP headers to include (default: {})
+            - 'body': Request body content (optional)
+    
+    Returns:
+        str: "UP" if endpoint is healthy, "DOWN" otherwise
+    """
     url = endpoint['url']
     method = endpoint.get('method', 'GET')
     headers = endpoint.get('headers', {})
@@ -33,6 +51,20 @@ def check_health(endpoint):
 
 
 def monitor_endpoints(config):
+    """
+    Continuously monitor the health of multiple endpoints and their availability.
+    
+    Endpoints are checked in cycles with a target cycle time of 15 seconds.
+    After each cycle, domain-based availability statistics are logged.
+    
+    Args:
+        config (list): List of endpoint dictionaries, each containing:
+            - 'url': URL to check (required)
+            - Other parameters needed by check_health()
+    
+    Returns:
+        This function runs in an infinite loop unitl keyboard interrupt signal
+    """
     domain_stats = defaultdict(lambda: {"up": 0, "total": 0})
     
     logger.debug("Starting monitoring")
