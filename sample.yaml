@@ -6,6 +6,8 @@
   url: https://dev-sre-take-home-exercise-rubric.us-east-1.recruiting-public.fetchrewards.com/body
 - name: sample index up
   url: https://dev-sre-take-home-exercise-rubric.us-east-1.recruiting-public.fetchrewards.com/
+- name: sample domain up
+  url: https://www.google.com
 - body: "{}"
   headers:
     content-type: application/json
