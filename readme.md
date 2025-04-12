@@ -1,6 +1,6 @@
 # Availability Checker
 
-This tool monitors the health and availability of HTTP endpoints specified in a YAML config file. It performs regular checks on each endpoint and reports cumulative availability by domain.
+This script monitors the health and availability of HTTP endpoints specified in a YAML config file. It performs regular checks on each endpoint and reports cumulative availability by domain.
 
 ## Installation
 
@@ -57,7 +57,7 @@ The configuration file should be in YAML format with the following structure:
 
 See [`sample.yaml`](https://github.com/AsishRaju/availability-tracker/blob/main/sample.yaml) for examples.
 
-## Issues Identified and Fix
+## Issues Identified and Fix Made
 
 <details>
   <summary>Response Time Check</summary>
