@@ -168,3 +168,6 @@ dmypy.json
 *.njsproj
 *.sln
 *.sw?
+
+#logs
+logs/
